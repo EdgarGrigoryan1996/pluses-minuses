@@ -1,9 +1,10 @@
 import './App.css';
 import {useState} from "react";
-import {changeValue, checkInputs} from "./Functions/functions";
+import {checkInputs} from "./Functions/functions";
+import Input from "./Components/Input";
 
 function App() {
-  const [plus,setPlus] = useState([
+    const [plus,setPlus] = useState([
     {
       id:0,
       value:"",
@@ -28,11 +29,7 @@ function App() {
                 <h2>Pluses</h2>
                 {plus?.map((input,i) => {
                     return (
-                        <div className="input-block">
-                            <input type="text" value={input.value} onChange={(e) => {
-                                changeValue(plus,setPlus,i,e)
-                            }}/><span>{i+1}</span>
-                        </div>
+                        <Input value={input.value} list={plus} setList={setPlus} index={i} />
                     )
                 })}
             </div>
@@ -40,11 +37,7 @@ function App() {
                 <h2>Minuses</h2>
                 {minus?.map((input,i) => {
                     return (
-                        <div className="input-block">
-                            <input type="text" value={input.value} onChange={(e) => {
-                                changeValue(minus,setMinus,i,e)
-                            }}/><span>{i+1}</span>
-                        </div>
+                        <Input value={input.value} list={minus} setList={setMinus} index={i} />
                     )
                 })}
             </div>
@@ -52,5 +45,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
